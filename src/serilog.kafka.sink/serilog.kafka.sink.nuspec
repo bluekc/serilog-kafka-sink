@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>keisenb.serilog.kafka.sink</id>
+    <version>0.0.1</version>
+    <title>Serilog Kafka Sink</title>
+    <authors>Kyle Eisenbarger</authors>
+    <owners>Kyle Eisenbarger</owners>
+    <licenseUrl>https://github.com/keisenb/serilog-kafka-sink/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/keisenb/serilog-kafka-sink</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Kafka Sink for producing structured logging events from Serilog to a topic.</description>
+    <releaseNotes>Initial Release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>serilog kafka sink producer logging apache</tags>
+  </metadata>
+</package>
