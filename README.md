@@ -2,7 +2,7 @@
 A Serilog sink for sending structured logging events to Apache Kafka
 
 
-Add this to your global.asax file
+Add this to your global.asax.cs file
 
 ```string brokers = "hostname of broker";
     string topic = "topic-name";
