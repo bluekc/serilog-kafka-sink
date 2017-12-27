@@ -11,4 +11,5 @@ string topic = "topic-name";
 Log.Logger = new LoggerConfiguration()
     .WriteTo
     .Kafka(batchSizeLimit: 50, period: 1, brokers: brokers, topic: topic)
-    .CreateLogger();```
+    .CreateLogger();
+```
