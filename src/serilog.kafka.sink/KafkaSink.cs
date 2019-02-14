@@ -1,11 +1,9 @@
 ﻿using Confluent.Kafka;
 using Confluent.Kafka.Serialization;
 using Serilog.Events;
-using Serilog.Formatting.Json;
 using Serilog.Sinks.PeriodicBatching;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,11 +12,9 @@ namespace serilog.kafka.sink
     public class KafkaSink : PeriodicBatchingSink
     {
 
-        private string topic;
-        private Producer<Null, string> producer;
-        private JsonFormatter formatter;
-        private Dictionary<string, object> config;
-        private string application;
+        private readonly string _topic;
+        private readonly Producer<Null, string> _producer;
+        private readonly string _application;
 
         public KafkaSink(
             int batchSizeLimit,
@@ -27,11 +23,10 @@ namespace serilog.kafka.sink
             string topic,
             string application) : base(batchSizeLimit, TimeSpan.FromSeconds(period))
         {
-            config = new Dictionary<string, object> { { "bootstrap.servers", brokers } };
-            producer = new Producer<Null, string>(config, null, new StringSerializer(Encoding.UTF8));
-            formatter = new JsonFormatter(closingDelimiter: null, renderMessage: true);
-            this.topic = topic;
-            this.application = application;
+            var config = new Dictionary<string, object> { { "bootstrap.servers", brokers } };
+            _producer = new Producer<Null, string>(config, null, new StringSerializer(Encoding.UTF8));
+            _topic = topic;
+            _application = application;
 
         }
 
@@ -44,16 +39,16 @@ namespace serilog.kafka.sink
                     Timestamp = @event.Timestamp.ToString(),
                     Level = @event.Level.ToString(),
                     MessageTemplate = @event.MessageTemplate.ToString(),
-                    RenderedMessage = @event.RenderMessage().ToString(),
-                    Application = this.application      
+                    RenderedMessage = @event.RenderMessage(),
+                    Application = _application      
                 };
-                await producer.ProduceAsync(topic, null, message.GetJson());
+                await _producer.ProduceAsync(_topic, null, message.GetJson());
             }
         }
 
         protected override void Dispose(bool disposing)
         {
-            producer?.Dispose();
+            _producer?.Dispose();
             base.Dispose(disposing);
         }
     }

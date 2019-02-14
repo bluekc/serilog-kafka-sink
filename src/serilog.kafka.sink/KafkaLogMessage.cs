@@ -9,68 +9,11 @@ namespace serilog.kafka.sink
 {
     public class KafkaLogMessage
     {
-        private string _timestamp;
-        private string _level;
-        private string _messageTemplate;
-        private string _renderedMessage;
-        private string _application;
-
-        public string Timestamp
-        {
-            get
-            {
-                return this._timestamp;
-            }
-            set
-            {
-                this._timestamp = value;
-            }
-        }
-        public string Level
-        {
-            get
-            {
-                return this._level;
-            }
-            set
-            {
-                this._level = value;
-            }
-        }
-        public string MessageTemplate
-        {
-            get
-            {
-                return this._messageTemplate;
-            }
-            set
-            {
-                this._messageTemplate = value;
-            }
-        }
-
-        public string RenderedMessage
-        {
-            get
-            {
-                return this._renderedMessage;
-            }
-            set
-            {
-                this._renderedMessage = value;
-            }
-        }
-        public string Application
-        {
-            get
-            {
-                return this._application;
-            }
-            set
-            {
-                this._application = value;
-            }
-        }
+        public string Timestamp { get; set; }
+        public string Level { get; set; }
+        public string MessageTemplate { get; set; }
+        public string RenderedMessage { get; set; }
+        public string Application { get; set; }
 
         public string GetJson()
         {
@@ -87,7 +30,7 @@ namespace serilog.kafka.sink
         }
     }
 
-    class Payload
+    internal class Payload
     {
         public string Timestamp;
         public string Level;
