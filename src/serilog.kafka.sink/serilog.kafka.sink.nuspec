@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>keisenb.serilog.kafka.sink</id>
-    <version>0.0.1</version>
+    <version>0.0.5</version>
     <title>Serilog Kafka Sink</title>
     <authors>Kyle Eisenbarger</authors>
     <owners>Kyle Eisenbarger</owners>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Kafka Sink for producing structured logging events from Serilog to a topic.</description>
     <releaseNotes>Initial Release.</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <copyright>Copyright 2019</copyright>
     <tags>serilog kafka sink producer logging apache</tags>
   </metadata>
 </package>
