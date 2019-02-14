@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="KafkaLogMessage.cs" />
     <Compile Include="KafkaSink.cs" />
-    <Compile Include="LoggerConfigurationKafkaExtension.cs" />
+    <Compile Include="LoggerConfigurationKafkaExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

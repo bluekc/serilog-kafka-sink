@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>keisenb.serilog.kafka.sink</id>
-    <version>0.0.5</version>
+    <version>0.0.7</version>
     <title>Serilog Kafka Sink</title>
     <authors>Kyle Eisenbarger</authors>
     <owners>Kyle Eisenbarger</owners>
