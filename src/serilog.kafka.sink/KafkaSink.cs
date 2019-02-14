@@ -18,17 +18,20 @@ namespace serilog.kafka.sink
         private Producer<Null, string> producer;
         private JsonFormatter formatter;
         private Dictionary<string, object> config;
+        private string application;
 
         public KafkaSink(
             int batchSizeLimit,
             int period,
             string brokers,
-            string topic) : base(batchSizeLimit, TimeSpan.FromSeconds(period))
+            string topic,
+            string application) : base(batchSizeLimit, TimeSpan.FromSeconds(period))
         {
             config = new Dictionary<string, object> { { "bootstrap.servers", brokers } };
             producer = new Producer<Null, string>(config, null, new StringSerializer(Encoding.UTF8));
             formatter = new JsonFormatter(closingDelimiter: null, renderMessage: true);
             this.topic = topic;
+            this.application = application;
 
         }
 
@@ -41,7 +44,8 @@ namespace serilog.kafka.sink
                     Timestamp = @event.Timestamp.ToString(),
                     Level = @event.Level.ToString(),
                     MessageTemplate = @event.MessageTemplate.ToString(),
-                    RenderedMessage = @event.RenderMessage().ToString()
+                    RenderedMessage = @event.RenderMessage().ToString(),
+                    Application = this.application      
                 };
                 await producer.ProduceAsync(topic, null, message.GetJson());
             }

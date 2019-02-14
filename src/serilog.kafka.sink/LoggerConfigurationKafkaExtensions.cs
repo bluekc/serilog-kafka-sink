@@ -17,19 +17,22 @@ namespace serilog.kafka.sink
         /// <param name="period">The time in seconds to wait between checking for event batches.</param>
         /// <param name="brokers">The list of brokers separated by comma.</param>
         /// <param name="topic">The topic name.</param>
+        /// <param name="application">The Application name if you have multiple applications streaming to the same topic.</param>
         /// <returns></returns>
         public static LoggerConfiguration Kafka(
             this LoggerSinkConfiguration loggerConfiguration,
             int batchSizeLimit,
             int period,
             string brokers,
-            string topic)
+            string topic,
+            string application)
         {
             var sink = new KafkaSink(
                 batchSizeLimit,
                 period,
                 brokers,
-                topic);
+                topic,
+                application);
             return loggerConfiguration.Sink(sink);
         }
     }
