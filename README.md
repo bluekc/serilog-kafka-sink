@@ -1,6 +1,7 @@
 # serilog-kafka-sink
 A Serilog sink for sending structured logging events to Apache Kafka
 
+[![Build Status](https://bluekc.visualstudio.com/BlueKC/_apis/build/status/keisenb.serilog-kafka-sink?branchName=master)](https://bluekc.visualstudio.com/BlueKC/_build/latest?definitionId=1438&branchName=master)
 
 Add this to your global.asax.cs file
 
